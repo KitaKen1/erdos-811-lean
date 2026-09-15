@@ -10,12 +10,18 @@ been reviewed, approved, submitted, or merged by that project.
 statements. Having a definition alone does not count as theorem coverage.
 All names below are inside the `Erdos811` namespace.
 
-The Lean file imports the shared canonical definitions from
-[`../lean/Erdos811NaturalDefinitions.lean`](../lean/Erdos811NaturalDefinitions.lean).
-That file contains the colouring structure, the five familiar definitions
-(colour degree, balance, rainbow copy, edge count and threshold), and the
-additional `UsesEveryColor` predicate. The definitions are no longer copied
-independently into the catalogue and proof source.
+[`Erdos811.lean`](Erdos811.lean) is a single-file statement draft for use in a
+Formal Conjectures checkout. It includes the colouring structure, all six
+definitions (colour degree, balance, colour usage, rainbow copy, edge count
+and threshold), and the nine statements. Its only imports are Mathlib and
+Formal Conjectures utilities; no other file from this repository is required
+to elaborate the draft.
+
+The seven definition declarations are textually identical to those in
+[`../lean/Erdos811NaturalDefinitions.lean`](../lean/Erdos811NaturalDefinitions.lean),
+which the proof development still uses. This identity is checked by the local
+catalogue validation command. The definitions are deliberately included in
+the draft so a reviewer can use this one file as the basis of an FC pull request.
 Quantifiers and colour counts appear directly in the theorem statements;
 unused counterexample predicates and statement-wide wrappers have been removed.
 Theorem docstrings are limited to one or two lines. Explanatory details live here.
@@ -65,7 +71,7 @@ theorem erdos_811.variants.axenovich_clemen_all_cliques :
 ```
 
 The legacy proof core still uses its original definitions and abbreviations.
-`Erdos811NaturalBridge` proves their conversion to the shared canonical
+`Erdos811NaturalBridge` proves their conversion to the canonical
 definitions. `Erdos811NaturalTarget` supplies the proved legacy theorem to this
 bridge and states the corrected target explicitly. No new research assumption
 is introduced. The final naked proposition matches the right side above.
@@ -122,8 +128,10 @@ Imports name the required Formal Conjectures utilities and Mathlib modules
 explicitly so that checking this statement catalogue does not load all of
 Mathlib through the umbrella `FormalConjecturesUtil` import.
 
-The revised catalogue passes elaboration with Lean 4.34.0-rc1 under `-M3072 -j1`
-(2026-09-15), using the separately compiled shared definitions.
+The single-file catalogue passes elaboration with Lean 4.34.0-rc1 under
+`-M3072 -j1` (2026-09-15), with only the external Mathlib and Formal Conjectures
+dependencies on its module search path. No compiled project-local definition
+module is used.
 This verifies the declaration types, with the expected `sorry` warnings;
 it is not proof verification of the listed research statements.
 
@@ -132,6 +140,18 @@ Reproduce from the workspace root:
 ```sh
 python3 fclikelean理解用/validate_semantic_revision.py catalogue
 ```
+
+In a Formal Conjectures checkout with the required dependencies already built,
+the draft itself is the only project-specific input:
+
+```sh
+lake env lean "/absolute/path/to/FClikelean/Erdos811.lean"
+```
+
+The checked dependency version is Formal Conjectures commit
+`205d301d60d01a2a432cbea611f9383cd08f9065`, with Lean/Mathlib `4.34.0-rc1`.
+This is one file for the statement draft, not one file containing every proof
+listed in the catalogue. The complete all-cliques proof remains a separate artifact.
 
 ## Scope boundary
 

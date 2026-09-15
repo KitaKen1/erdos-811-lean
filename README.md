@@ -7,9 +7,10 @@ property.
 
 The development has two components:
 
-1. **Nine source-level statements.** [The FC-shaped catalogue](FClikelean/Erdos811.lean)
-   includes MAIN, the two six-colour challenges, and six variants or known results
-   from the supplied problem page.
+1. **Nine source-level statements in one file.** [The FC-shaped catalogue](FClikelean/Erdos811.lean)
+   includes all problem-specific definitions, MAIN, the two six-colour challenges,
+   and six variants or known results from the supplied problem page. It needs no
+   custom imports beyond Mathlib and Formal Conjectures utilities.
 2. **A proof for every clique of order at least four.** For every `q ≥ 4`,
    there are arbitrarily large completely balanced colourings using exactly
    `q.choose 2` colours with no rainbow `K_q`.
@@ -107,10 +108,14 @@ catalogue's `sorry` a dependency of the proof.
 
 ### Natural-language conventions
 
-The [shared definitions](lean/Erdos811NaturalDefinitions.lean) count only
+The [definitions included in the catalogue](FClikelean/Erdos811.lean) count only
 off-diagonal edges, identify the two orientations of an undirected edge, and
 require injective vertex maps for rainbow copies. Balance uses `(n − 1) / m`,
 and congruence uses `Nat.ModEq m n 1`.
+
+Their declarations match [the proof-side definitions](lean/Erdos811NaturalDefinitions.lean)
+exactly. They are included directly in the catalogue so reviewers can use one
+file as the basis of a Formal Conjectures pull request.
 
 This follows the [paper's complete-balance convention][ac]. The supplied
 page's `⌊n/m⌋` agrees when `m > 1` and `n ≡ 1 (mod m)`; `(n − 1) / m` also
@@ -125,9 +130,9 @@ conventions are explained in [FClikelean/README.md](FClikelean/README.md).
 
 | File | Role |
 |---|---|
-| [FClikelean/Erdos811.lean](FClikelean/Erdos811.lean) | Nine statements with FC-style metadata and intentional proof placeholders |
+| [FClikelean/Erdos811.lean](FClikelean/Erdos811.lean) | Single-file FC draft: one structure, six definitions and nine statements with intentional proof placeholders |
 | [FClikelean/README.md](FClikelean/README.md) | Declaration-to-source mapping and definition conventions |
-| [lean/Erdos811NaturalDefinitions.lean](lean/Erdos811NaturalDefinitions.lean) | Canonical definitions shared by catalogue and endpoint |
+| [lean/Erdos811NaturalDefinitions.lean](lean/Erdos811NaturalDefinitions.lean) | Proof-side definitions; their declarations are also included verbatim in the FC draft |
 | [lean/Erdos811NaturalBridge.lean](lean/Erdos811NaturalBridge.lean) | Proved transfer from the construction's legacy definitions |
 | [lean/Erdos811NaturalTarget.lean](lean/Erdos811NaturalTarget.lean) | Current endpoint and stronger all-colours-used theorem |
 | [lean4web/Erdos811Lean4WebSingle.lean](lean4web/Erdos811Lean4WebSingle.lean) | Complete Mathlib-only proof, including current definitions, bridge and endpoint |
@@ -144,7 +149,7 @@ development, not the revised endpoint.
 |---|---|---|
 | Complete standalone proof | Lean / Mathlib `4.27.0` | Passed from source; exit code 0; approximately 58 minutes |
 | Shared-definition bridge | Lean / Mathlib `4.27.0` | Passed; no warnings |
-| FC-shaped catalogue | Lean / Mathlib `4.34.0-rc1`, Formal Conjectures utilities | Elaborated successfully; nine expected proof-placeholder warnings |
+| Single-file FC-shaped catalogue | Lean / Mathlib `4.34.0-rc1`, Formal Conjectures utilities only | Elaborated without project-local imports; nine expected proof-placeholder warnings |
 
 The standalone file contains 96 bundled modules and 14,975 lines. The full
 run used `-M3072 -j1` and emitted 92 style/linter warnings in retained proof
@@ -182,9 +187,10 @@ and several gigabytes of memory; runtime depends on the machine or browser
 session. No development-archive modules are needed by this single-file route.
 
 The catalogue's recorded elaboration used Formal Conjectures commit
-`205d301d60d01a2a432cbea611f9383cd08f9065` and separately compiled
-`Erdos811NaturalDefinitions`, with Lean `4.34.0-rc1`. Elaboration checks
-statement types; it does not discharge the nine `sorry`s.
+`205d301d60d01a2a432cbea611f9383cd08f9065` with Lean `4.34.0-rc1`.
+All project-specific definitions are in that single file; no separately
+compiled `Erdos811NaturalDefinitions` is required. Elaboration checks statement
+types; it does not discharge the nine `sorry`s.
 
 SHA-256 of the fully checked standalone source:
 
