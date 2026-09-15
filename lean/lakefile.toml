@@ -1,0 +1,181 @@
+# Historical FC/LRAT project; the corrected public proof is the Mathlib-only
+# bundle generated from Erdos811NaturalTarget, checked by the revision runner.
+name = "erdos_811_fc"
+version = "0.1.0"
+defaultTargets = ["Erdos811FC"]
+
+[[require]]
+name = "formal_conjectures"
+git = "https://github.com/google-deepmind/formal-conjectures"
+rev = "205d301d60d01a2a432cbea611f9383cd08f9065"
+
+[[lean_lib]]
+name = "Erdos811FC"
+
+[[lean_lib]]
+name = "Erdos811Definitions"
+
+[[lean_lib]]
+name = "Q5Certificate"
+
+[[lean_lib]]
+name = "Q4Certificate"
+
+[[lean_lib]]
+name = "Lexicographic"
+
+[[lean_lib]]
+name = "LexAmplification"
+
+[[lean_lib]]
+name = "CyclicBases"
+
+[[lean_lib]]
+name = "Q9FastSearch"
+
+[[lean_lib]]
+name = "Q9BitsetLemmas"
+
+[[lean_lib]]
+name = "Q9FastProof"
+
+[[lean_lib]]
+name = "Q9SATtoGraph"
+
+[[lean_lib]]
+name = "Q9FastBridge"
+
+[[lean_lib]]
+name = "Q9Symmetry"
+
+[[lean_lib]]
+name = "Q9Parity"
+
+[[lean_lib]]
+name = "Q9ParityFormulas"
+
+[[lean_lib]]
+name = "Q9EdgePairs"
+
+[[lean_lib]]
+name = "Q9ParityObstructions"
+
+[[lean_lib]]
+name = "Q9NoInfR4CNF"
+
+[[lean_lib]]
+name = "Q9LRATChunked"
+
+[[lean_lib]]
+name = "Q9SeqCounter"
+
+[[lean_lib]]
+name = "Q9NoInfR5CNF"
+
+[[lean_lib]]
+name = "Q9CNFSemantics"
+
+[[lean_lib]]
+name = "Q9CNFBridge"
+
+[[lean_lib]]
+name = "Q9ConstructiveValuation"
+
+[[lean_lib]]
+name = "Q9Agreement"
+
+[[lean_lib]]
+name = "Q9CollisionBoundsAudit"
+
+[[lean_lib]]
+name = "Q9CollisionBoundsAuditR4"
+
+[[lean_lib]]
+name = "Q9CollisionBoundsAuditR5"
+
+[[lean_lib]]
+name = "Q9ConstructiveCNFAssembly"
+
+[[lean_lib]]
+name = "Q9LRATSemanticBridge"
+
+[[lean_lib]]
+name = "Q9ParityCountBridge"
+
+[[lean_lib]]
+name = "Q9FiniteBranchBridge"
+
+[[lean_lib]]
+name = "ProbabilisticBound"
+
+[[lean_lib]]
+name = "RoundRobin"
+
+[[lean_lib]]
+name = "WeakSidon"
+
+[[lean_lib]]
+name = "RoundRobinSidon"
+
+[[lean_lib]]
+name = "RoundRobinSidonCases"
+
+[[lean_lib]]
+name = "Q8Paper"
+
+[[lean_lib]]
+name = "Q8PaperCore"
+
+[[lean_lib]]
+name = "Q8PaperFinite"
+
+[[lean_lib]]
+name = "Q8PaperInfinity"
+
+[[lean_lib]]
+name = "Q8PaperNormalized"
+
+[[lean_lib]]
+name = "Q8PaperTranslation"
+
+[[lean_lib]]
+name = "Q8PaperResidueSearch"
+
+[[lean_lib]]
+name = "Q8PaperResidueCertificate"
+
+[[lean_lib]]
+name = "Q8PaperEmbedding"
+
+[[lean_lib]]
+name = "Q8PaperInfinityArithmetic"
+
+[[lean_lib]]
+name = "Q8PaperInfinityArithmeticBridge"
+
+[[lean_lib]]
+name = "Q8PaperInfinityNormalization"
+
+[[lean_lib]]
+name = "Q8PaperInfinityGraph"
+
+[[lean_lib]]
+name = "ProbabilisticPairing"
+
+[[lean_lib]]
+name = "RainbowSet"
+
+[[lean_lib]]
+name = "CyclicDifference"
+
+[[lean_lib]]
+name = "Q9CollisionPartitionR4"
+
+[[lean_lib]]
+name = "Q9PartitionInclusionR4"
+
+[[lean_lib]]
+name = "Q9CollisionPartitionR5"
+
+[[lean_lib]]
+name = "Q9PartitionInclusionR5"
